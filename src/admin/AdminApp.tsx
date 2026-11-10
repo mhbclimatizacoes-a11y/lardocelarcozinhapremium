@@ -24,6 +24,11 @@ function AuthScreen({ onLogin }: { onLogin: (me: Me) => void }) {
   const [err, setErr] = useState("");
   const [info, setInfo] = useState("");
   const [busy, setBusy] = useState(false);
+  // Só oferece "primeiro acesso" enquanto não existir administrador (se a consulta falhar, mantém visível).
+  const [needsSetup, setNeedsSetup] = useState(true);
+  useEffect(() => {
+    api<{ needs_setup: boolean }>("/api/admin/setup-status").then((r) => { setNeedsSetup(r.needs_setup); if (!r.needs_setup) setMode("login"); }).catch(() => {});
+  }, []);
   const set = (k: keyof typeof f, v: string) => setF((p) => ({ ...p, [k]: v }));
 
   const login = async () => {
@@ -65,9 +70,13 @@ function AuthScreen({ onLogin }: { onLogin: (me: Me) => void }) {
         {err && <Notice kind="error">{err}</Notice>}
         {info && <Notice kind="ok">{info}</Notice>}
         <button className="btn-primary w-full" disabled={busy}>{busy ? "Aguarde…" : mode === "login" ? "Entrar" : "Criar e entrar"}</button>
-        <button type="button" className="w-full text-center text-sm font-semibold text-olive underline" onClick={() => { setMode(mode === "login" ? "first" : "login"); setErr(""); }}>
-          {mode === "login" ? "Primeiro acesso? Criar administrador" : "Já tenho conta"}
-        </button>
+        {needsSetup ? (
+          <button type="button" className="w-full text-center text-sm font-semibold text-olive underline" onClick={() => { setMode(mode === "login" ? "first" : "login"); setErr(""); }}>
+            {mode === "login" ? "Primeiro acesso? Criar administrador" : "Já tenho conta"}
+          </button>
+        ) : (
+          <p className="text-center text-xs text-ink-2">Use o e-mail e a senha do administrador já criado.</p>
+        )}
       </form>
     </div>
   );
