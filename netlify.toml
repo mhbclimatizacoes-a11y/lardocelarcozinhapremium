@@ -2,6 +2,13 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  # Versão do Node compatível com Vite 7 / TypeScript.
+  NODE_VERSION = "22"
+  # Garante a instalação de typescript, vite e tipos (devDependencies) mesmo que o ambiente
+  # tenha NODE_ENV=production definido; sem elas o build falha na checagem de tipos.
+  NPM_FLAGS = "--include=dev"
+
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
