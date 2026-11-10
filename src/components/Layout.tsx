@@ -173,7 +173,7 @@ function CartToast() {
 
 export default function Layout() {
   const loc = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [loc.pathname]);
+  useEffect(() => { window.scrollTo(0, 0); }, [loc.pathname]);
   const hideNewsletter = ["/carrinho", "/checkout"].includes(loc.pathname) || loc.pathname.startsWith("/pedido");
   return (
     <>
