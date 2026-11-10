@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" role="img" aria-label="Imagem demonstrativa">
+  <rect width="1200" height="1200" fill="#D6DECB"/>
+  <circle cx="600" cy="570" r="322.4" fill="#A8B79E" fill-opacity=".28"/>
+  <g transform="translate(340 294.4) scale(5.2)" fill="none" stroke="#55653A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="26" width="64" height="44" rx="6"/><path d="M18 62h64M30 36h30M30 46h22"/><path d="M62 70v8h20v-8"/></g>
+  <text x="600" y="1152" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#55653A" fill-opacity=".7">Imagem demonstrativa · 1200 × 1200 px</text>
+</svg>

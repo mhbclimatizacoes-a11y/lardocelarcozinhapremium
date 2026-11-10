@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Imagem demonstrativa">
+  <rect width="600" height="600" fill="#DDE3D3"/>
+  <circle cx="300" cy="300" r="161.2" fill="#A8B79E" fill-opacity=".28"/>
+  <g transform="translate(170 162.2) scale(2.6)" fill="none" stroke="#55653A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M30 78V42m0 0c-8-2-12-10-10-18h20c2 8-2 16-10 18zM58 78V36l12-14 12 14v42" /><path d="M58 52h24"/></g>
+  
+</svg>
