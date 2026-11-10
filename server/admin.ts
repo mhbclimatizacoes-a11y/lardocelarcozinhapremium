@@ -188,6 +188,12 @@ export function registerAdminRoutes(r: Router): void {
     audit(q ?? rc.ctx.db, s.adminId, action, entity, id, meta, rc.req);
 
   // ---------- autenticação ----------
+  // Público: informa só se ainda falta criar o primeiro administrador (a tela de login usa para mostrar ou esconder o "primeiro acesso").
+  r.get("/api/admin/setup-status", async ({ ctx }) => {
+    const { rows } = await ctx.db.query<{ n: string | number }>(`SELECT count(*) AS n FROM admins`);
+    return json({ needs_setup: Number(rows[0]?.n ?? 0) === 0 });
+  });
+
   r.post("/api/admin/bootstrap", async ({ ctx, req }) => {
     await rateLimit(ctx.db, `bootstrap:${clientIp(req)}`, 5, 900, ctx.now());
     const expected = ctx.env.ADMIN_BOOTSTRAP_TOKEN;
