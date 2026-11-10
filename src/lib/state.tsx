@@ -31,7 +31,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
-  useEffect(load, [load]);
+  useEffect(() => { load(); }, [load]);
   return <StoreCtx.Provider value={{ data, loading, error, reload: load }}>{children}</StoreCtx.Provider>;
 }
 
