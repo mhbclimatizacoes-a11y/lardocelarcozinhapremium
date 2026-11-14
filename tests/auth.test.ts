@@ -18,8 +18,10 @@ describe("autenticação administrativa", () => {
   });
 
   it("cria o primeiro administrador uma única vez e guarda hash (nunca a senha)", async () => {
+    expect((await app.call("GET", "/api/admin/setup-status")).body).toEqual({ needs_setup: true });
     const ok = await app.call("POST", "/api/admin/bootstrap", { token: "b".repeat(32), email: "dono@loja.com", name: "Dono", password: "senha-super-segura-123" });
     expect(ok.status).toBe(201);
+    expect((await app.call("GET", "/api/admin/setup-status")).body).toEqual({ needs_setup: false });
     const again = await app.call("POST", "/api/admin/bootstrap", { token: "b".repeat(32), email: "outro@loja.com", name: "Outro", password: "senha-super-segura-123" });
     expect(again.status).toBe(409);
     const { rows } = await app.pg.query<{ password_hash: string }>("SELECT password_hash FROM admins");

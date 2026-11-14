@@ -20,6 +20,7 @@ export function Qty({ value, max, onChange, label = "Quantidade" }: { value: num
 }
 
 function videoEmbed(url: string): { type: "iframe" | "video" | "link"; src: string } {
+  if (/^\/(?!\/).+\.(mp4|webm)$/i.test(url)) return { type: "video", src: url };
   try {
     const u = new URL(url);
     if (/(^|\.)youtube\.com$/.test(u.hostname) && u.searchParams.get("v")) return { type: "iframe", src: `https://www.youtube-nocookie.com/embed/${u.searchParams.get("v")}` };

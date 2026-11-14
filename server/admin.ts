@@ -26,6 +26,8 @@ const imageUrl = z
   .max(1000)
   .refine((v) => v.startsWith("/") || /^https:\/\//.test(v), "Use uma URL https:// ou um caminho iniciado por /.");
 const httpsUrl = z.string().trim().max(1000).refine((v) => /^https:\/\//.test(v), "Use uma URL https://.");
+// Vídeo: URL https:// ou arquivo da própria loja (ex.: /produtos/slug/video.mp4)
+const videoUrl = z.string().trim().max(1000).refine((v) => /^https:\/\//.test(v) || /^\/(?!\/)[\w\-./]+\.(mp4|webm)$/i.test(v), "Use uma URL https:// ou um caminho /produtos/…mp4.");
 const optUuid = z.preprocess(emptyToNull, z.string().uuid().nullable().optional());
 const uuidParam = z.string().uuid();
 
@@ -54,7 +56,7 @@ const productBody = z
     meta_title: nstr(120),
     meta_description: nstr(300),
     images: z.array(z.object({ url: imageUrl, alt: nstr(200), media_asset_id: optUuid })).max(12).default([]),
-    videos: z.array(z.object({ url: httpsUrl, title: nstr(120) })).max(5).default([]),
+    videos: z.array(z.object({ url: videoUrl, title: nstr(120) })).max(5).default([]),
   })
   .refine(validPrices, PRICE_MSG);
 

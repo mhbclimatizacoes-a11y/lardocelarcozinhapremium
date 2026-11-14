@@ -7,10 +7,10 @@ describe("catálogo inicial (migrations + seed)", () => {
     app = await createTestApp();
   });
 
-  it("carrega os 10 produtos de demonstração do banco, sem preços inventados", async () => {
+  it("carrega os 15 produtos do catálogo, sem preços inventados", async () => {
     const r = await app.call("GET", "/api/products");
     expect(r.status).toBe(200);
-    expect(r.body.total).toBe(10);
+    expect(r.body.total).toBe(15);
     for (const p of r.body.items) {
       expect(p.price_cents).toBeNull();
       expect(p.purchasable).toBe(false);
@@ -207,5 +207,26 @@ describe("admin: produto expõe estoque físico para edição", () => {
     expect(r.body.item.low_stock_threshold).toBe(3);
     const pub = await app.call("GET", `/api/products/${p.slug}`);
     expect(pub.body.product).not.toHaveProperty("stock_qty");
+  });
+});
+
+describe("mídia real do catálogo", () => {
+  let app: TestApp;
+  beforeAll(async () => { app = await createTestApp(); });
+
+  it("fotos e vídeos ligados aos produtos e todos os arquivos existem em /public", async () => {
+    const { existsSync } = await import("node:fs");
+    const path = await import("node:path");
+    const pub = path.resolve(__dirname, "../public");
+    const imgs = await app.pg.query<{ url: string }>("SELECT url FROM product_images");
+    const vids = await app.pg.query<{ url: string }>("SELECT url FROM product_videos");
+    const combos = await app.pg.query<{ image_url: string }>("SELECT image_url FROM combos");
+    expect(imgs.rows.length).toBeGreaterThan(100);
+    expect(vids.rows.length).toBeGreaterThan(10);
+    for (const { url } of [...imgs.rows, ...vids.rows]) expect(existsSync(path.join(pub, url)), url).toBe(true);
+    for (const { image_url } of combos.rows) expect(existsSync(path.join(pub, image_url)), image_url).toBe(true);
+    const r = await app.call("GET", "/api/products/afiador-de-facas");
+    expect(r.body.product.images[0].url).toBe("/produtos/afiador-de-facas/1.webp");
+    expect(r.body.product.videos.length).toBe(2);
   });
 });
