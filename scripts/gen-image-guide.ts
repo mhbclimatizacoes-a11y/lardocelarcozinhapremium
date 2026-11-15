@@ -4,6 +4,7 @@ import { IMAGE_SPECS } from "../src/lib/imageSpecs";
 
 const where: Record<string, string> = {
   logo: "Painel → Configurações → Loja",
+  logoLight: "Painel → Configurações → Loja",
   hero: "Painel → Banners e categorias → Banners",
   category: "Painel → Banners e categorias → Categorias",
   product: "Painel → Produtos → editar produto → Imagens",

@@ -9,7 +9,7 @@ import { buildQuote, cartLineSchema } from "./quote";
 import type { Router } from "./router";
 
 export const PUBLIC_SETTING_KEYS = [
-  "store_name", "tagline", "logo_url", "phone", "whatsapp", "email", "instagram", "facebook", "address",
+  "store_name", "tagline", "logo_url", "logo_light_url", "phone", "whatsapp", "email", "instagram", "facebook", "address",
   "about_title", "about_text", "home_detail_image", "home_action_image", "about_image", "benefits", "shipping_policy", "return_policy", "privacy_policy", "terms",
   "manual_payment_instructions",
 ] as const;

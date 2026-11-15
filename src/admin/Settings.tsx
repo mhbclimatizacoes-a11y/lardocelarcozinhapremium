@@ -66,8 +66,11 @@ export default function Settings() {
             {text("store_name", "Nome da loja")}
             {text("tagline", "Frase de apresentação")}
           </div>
-          <ImageField spec="logo" label="Logotipo" value={s.logo_url ?? ""} onChange={(u) => set("logo_url", u)} />
-          <p className="hint">Sem logotipo, a loja mostra o nome com o símbolo padrão.</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageField spec="logo" label="Logotipo colorido (fundo claro)" value={s.logo_url ?? ""} onChange={(u) => set("logo_url", u)} />
+            <ImageField spec="logoLight" label="Logotipo claro (fundo escuro)" value={s.logo_light_url ?? ""} onChange={(u) => set("logo_light_url", u)} />
+          </div>
+          <p className="hint">O colorido aparece no cabeçalho; o claro aparece no rodapé e no painel (fundo verde-escuro). Se você não enviar o claro, a loja usa o colorido em branco. Sem logotipo, aparece o nome com o símbolo padrão.</p>
         </section>
 
         <section className="card space-y-4 p-6">

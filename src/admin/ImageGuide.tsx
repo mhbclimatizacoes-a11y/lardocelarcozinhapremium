@@ -3,6 +3,7 @@ import { PageHead } from "./kit";
 
 const where: Record<string, string> = {
   logo: "Configurações → Loja",
+  logoLight: "Configurações → Loja",
   hero: "Banners e categorias → Banners",
   category: "Banners e categorias → Categorias",
   product: "Produtos → editar produto → Imagens",

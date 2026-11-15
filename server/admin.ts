@@ -137,6 +137,7 @@ const settingsBody = z
     store_name: z.string().trim().min(1).max(80),
     tagline: z.string().trim().max(160),
     logo_url: z.union([z.literal(""), imageUrl]),
+    logo_light_url: z.union([z.literal(""), imageUrl]),
     phone: z.string().trim().max(40),
     whatsapp: z.string().trim().max(40),
     email: z.union([z.literal(""), z.string().trim().email().max(160)]),

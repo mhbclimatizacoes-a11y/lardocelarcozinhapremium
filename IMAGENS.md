@@ -7,6 +7,7 @@
 | Imagem | Tamanho (px) | Proporção | Formato | Peso máx. |
 |---|---|---|---|---|
 | Logotipo | **480 × 120** | 4:1 | PNG ou SVG com fundo transparente | 100 KB |
+| Logotipo claro | **480 × 120** | 4:1 | PNG ou SVG com fundo transparente | 100 KB |
 | Banner principal | **2400 × 1200** | 2:1 | JPG ou WebP | 450 KB |
 | Imagem da categoria | **600 × 600** | 1:1 (quadrada) | JPG ou WebP | 120 KB |
 | Foto do produto | **1200 × 1200** | 1:1 (quadrada) | JPG ou WebP | 250 KB |
@@ -26,8 +27,14 @@
 ## Detalhes de cada imagem
 
 ### Logotipo — 480 × 120 px (4:1)
-- **Onde aparece:** Cabeçalho e rodapé (exibido com cerca de 160 × 40 px).
-- **Dica:** Versão horizontal, em grafite ou verde-oliva. Deixe uma pequena margem em volta.
+- **Onde aparece:** Cabeçalho da loja (fundo claro), exibido com cerca de 220 × 56 px.
+- **Dica:** Versão colorida, horizontal. Corte rente ao desenho (sem margem transparente sobrando), senão o logotipo parece pequeno.
+- **Formato / peso:** PNG ou SVG com fundo transparente, até 100 KB
+- **Onde enviar:** Painel → Configurações → Loja
+
+### Logotipo claro — 480 × 120 px (4:1)
+- **Onde aparece:** Rodapé e painel administrativo (fundo verde-escuro).
+- **Dica:** Mesmo desenho do logotipo colorido, porém em branco ou bege-claro. Mesmo tamanho e enquadramento do colorido.
 - **Formato / peso:** PNG ou SVG com fundo transparente, até 100 KB
 - **Onde enviar:** Painel → Configurações → Loja
 

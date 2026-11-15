@@ -10,7 +10,7 @@ interface StoreData {
   payment_mode: "mercadopago" | "manual";
 }
 const emptySettings: Settings = {
-  store_name: "Casa Sálvia", tagline: "", logo_url: "", phone: "", whatsapp: "", email: "", instagram: "", facebook: "",
+  store_name: "Casa Sálvia", tagline: "", logo_url: "", logo_light_url: "", phone: "", whatsapp: "", email: "", instagram: "", facebook: "",
   address: "", about_title: "", about_text: "", home_detail_image: "", home_action_image: "", about_image: "", benefits: [], shipping_policy: "", return_policy: "", privacy_policy: "", terms: "",
   manual_payment_instructions: "",
 };

@@ -32,8 +32,16 @@ export const LogoutIcon = (p: P) => (<svg {...base} {...p}><path d="M10 5H5v14h5
 export const WalletIcon = (p: P) => (<svg {...base} {...p}><path d="M4 7h14a2 2 0 012 2v9H6a2 2 0 01-2-2V7zM4 7l12-2v2" /><circle cx="16" cy="13" r="1" /></svg>);
 export const ChevronIcon = (p: P) => (<svg {...base} {...p}><path d="M9 6l6 6-6 6" /></svg>);
 
-export function Logo({ name, url, className = "" }: { name: string; url?: string; className?: string }) {
-  if (url) return <img src={url} alt={name} className={`h-8 w-auto max-w-[180px] object-contain ${className}`} />;
+/**
+ * Logotipo. `onDark` = usado sobre fundo escuro: mostra a versão clara (`lightUrl`);
+ * sem ela, deixa o logotipo normal em branco (silhueta) para continuar legível.
+ */
+export function Logo({ name, url, lightUrl, onDark = false, className = "" }: { name: string; url?: string; lightUrl?: string; onDark?: boolean; className?: string }) {
+  const src = onDark ? lightUrl || url : url;
+  if (src) {
+    const silhouette = onDark && !lightUrl ? "brightness-0 invert" : "";
+    return <img src={src} alt={name} className={`h-11 w-auto max-w-[220px] object-contain object-left sm:h-12 lg:h-14 lg:max-w-[260px] ${silhouette} ${className}`} />;
+  }
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
       <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">

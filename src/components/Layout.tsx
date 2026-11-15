@@ -42,12 +42,12 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur-md">
-      <div className="container-x flex h-[68px] items-center gap-6">
+      <div className="container-x flex h-[76px] items-center gap-6">
         <button className="-ml-2 grid h-11 w-11 place-items-center lg:hidden" aria-label="Abrir menu" aria-expanded={open} onClick={() => setOpen(true)}>
           <MenuIcon />
         </button>
         <Link to="/" aria-label={`${data.settings.store_name} — página inicial`} className="shrink-0 text-ink">
-          <Logo name={data.settings.store_name} url={data.settings.logo_url} />
+          <Logo name={data.settings.store_name} url={data.settings.logo_url} lightUrl={data.settings.logo_light_url} />
         </Link>
         <nav aria-label="Principal" className="ml-auto hidden items-center gap-8 whitespace-nowrap lg:flex">
           <NavLink to="/produtos" end className={link}>Produtos</NavLink>
@@ -77,7 +77,7 @@ function Header() {
           <button className="absolute inset-0 bg-ink/40" aria-label="Fechar menu" onClick={() => setOpen(false)} />
           <div className="absolute inset-y-0 left-0 flex w-[86%] max-w-sm flex-col gap-6 overflow-y-auto bg-paper p-5">
             <div className="flex items-center justify-between">
-              <Logo name={data.settings.store_name} url={data.settings.logo_url} />
+              <Logo name={data.settings.store_name} url={data.settings.logo_url} lightUrl={data.settings.logo_light_url} />
               <button className="grid h-11 w-11 place-items-center" aria-label="Fechar menu" onClick={() => setOpen(false)}><CloseIcon /></button>
             </div>
             {searchForm()}
@@ -114,7 +114,7 @@ function Footer() {
     <footer className="mt-24 bg-forest text-paper/80">
       <div className="container-x grid gap-12 py-14 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <span className="text-paper [--logo-leaf:#1f3a2e]"><Logo name={s.store_name} url={s.logo_url} /></span>
+          <span className="text-paper [--logo-leaf:#1f3a2e]"><Logo name={s.store_name} url={s.logo_url} lightUrl={s.logo_light_url} onDark /></span>
           {s.tagline && <p className="mt-4 max-w-xs text-sm leading-6 text-paper/70">{s.tagline}</p>}
         </div>
         <nav aria-label="Loja">

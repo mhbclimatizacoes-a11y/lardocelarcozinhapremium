@@ -54,7 +54,7 @@ function AuthScreen({ onLogin }: { onLogin: (me: Me) => void }) {
   return (
     <div className="grid min-h-screen place-items-center bg-paper-2 p-4">
       <form onSubmit={submit} className="w-full max-w-md space-y-5 rounded-[12px] border border-line bg-paper p-8 shadow-sm">
-        <Logo name={data.settings.store_name} url={data.settings.logo_url} />
+        <Logo name={data.settings.store_name} url={data.settings.logo_url} lightUrl={data.settings.logo_light_url} />
         <h1 className="text-2xl font-extrabold">{mode === "login" ? "Entrar no painel" : "Criar primeiro administrador"}</h1>
         {mode === "first" && (
           <>
@@ -114,7 +114,7 @@ export default function AdminApp() {
       <div className="min-h-screen bg-forest lg:grid lg:grid-cols-[250px_1fr]">
         <aside className="text-paper/75 lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col">
           <div className="flex items-center justify-between gap-4 p-4 lg:block lg:px-6 lg:pb-4 lg:pt-7">
-            <span className="text-paper [--logo-leaf:#1f3a2e]"><Logo name={data.settings.store_name} url={data.settings.logo_url} /></span>
+            <span className="text-paper [--logo-leaf:#1f3a2e]"><Logo name={data.settings.store_name} url={data.settings.logo_url} lightUrl={data.settings.logo_light_url} onDark /></span>
             <p className="hidden pt-4 text-xs leading-5 text-paper/60 lg:block">{me.name}<br />{me.email}</p>
           </div>
           <nav aria-label="Painel" className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-1 lg:flex-col lg:overflow-visible lg:px-4">

@@ -2,6 +2,7 @@ export interface Settings {
   store_name: string;
   tagline: string;
   logo_url: string;
+  logo_light_url: string;
   phone: string;
   whatsapp: string;
   email: string;

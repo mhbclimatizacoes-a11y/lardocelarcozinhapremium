@@ -21,8 +21,13 @@ export interface ImageSpec {
 export const IMAGE_SPECS = {
   logo: {
     key: "logo", label: "Logotipo", w: 480, h: 120, ratio: "4:1", format: "PNG ou SVG com fundo transparente", maxKb: 100,
-    where: "Cabeçalho e rodapé (exibido com cerca de 160 × 40 px).",
-    tip: "Versão horizontal, em grafite ou verde-oliva. Deixe uma pequena margem em volta.",
+    where: "Cabeçalho da loja (fundo claro), exibido com cerca de 220 × 56 px.",
+    tip: "Versão colorida, horizontal. Corte rente ao desenho (sem margem transparente sobrando), senão o logotipo parece pequeno.",
+  },
+  logoLight: {
+    key: "logoLight", label: "Logotipo claro", w: 480, h: 120, ratio: "4:1", format: "PNG ou SVG com fundo transparente", maxKb: 100,
+    where: "Rodapé e painel administrativo (fundo verde-escuro).",
+    tip: "Mesmo desenho do logotipo colorido, porém em branco ou bege-claro. Mesmo tamanho e enquadramento do colorido.",
   },
   hero: {
     key: "hero", label: "Banner principal", w: 2400, h: 1200, ratio: "2:1", format: "JPG ou WebP", maxKb: 450,
